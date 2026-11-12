@@ -1,33 +1,48 @@
-#include <iostream>
-
+#include<iostream>
 using namespace std;
+class Book{
+private:
+    string title;
+    string author;
+    int copies;
 
-int calculatefinerate(int overdue){
+    //constructor};
+public:
+    Book(string t,string a,int c){
+    title=t;
+    author=a;
+    copies=c;
+    }
+    void Display(){
+    cout<<"BOOK TITLE  :"<<title<<endl;
+    cout<<"BOOK AUTHOR  :"<<author<<endl;
+    cout<<"COPIES AVAILABLE  :"<<copies<<endl;
+    }
 
-if(overdue<=7){return 20;}
-else if(overdue>=8 && overdue <=14 ){return 50;}
-else{return 100;}
+    void Borrowbook(){
+    if(copies>1){copies--;
+    cout <<"book borrowed successfully";}
+    else{cout<<"no copy available";}
+    }
 
-}
-int main()
-{
-    int BookID,Duedate,Returndate,daysoverdue,finerate ,fineamount;
-    cout << "Enter book ID" << endl;
-    cin >> BookID;
-    cout << "Enter due date" <<endl;
-    cin >> Duedate;
-    cout <<"Enter return date" <<endl ;
-    cin >> Returndate;
+    void Retunbook(){
+    copies++;
+    cout<<"book returned successfully"<<endl;}
 
-    daysoverdue= Returndate-Duedate;
-    finerate=calculatefinerate(daysoverdue);
-    fineamount =daysoverdue*finerate;
 
-cout << " book ID is :: " <<BookID <<endl;
-cout << "due date :: "<<Duedate << endl;
-cout << "return date :: "<< Returndate << endl ;
-cout << "days over due ::" << daysoverdue << endl;
-cout << "fine rate :: " << finerate <<endl;
-cout << "fine amount" <<fineamount<<endl;
+    //destructor
+     Book(){cout<<"book object destroyed"<<endl;}
+     };
+    int main(){
+    Book b1("KIGOGO", "JOHN" ,5);
+    b1.Display();
+
+    b1.Borrowbook();
+    b1.Display();
+
+    b1.Retunbook();
+    b1.Display();
+
+
     return 0;
-}
+    }
